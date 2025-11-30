@@ -16,18 +16,10 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 // Routes
-app.get('/', (req: Request, res: Response) => {
 
-    const items = [
-        { id: 1, name: 'Task 1' },
-        { id: 2, name: 'Task 2' },
-        { id: 3, name: 'Task 3' },
-    ];
-    res.json(items);
-});
-
-app.post('/data', (req: Request, res: Response) => {
+app.post('/submit-task', (req: Request, res: Response) => {
     const data = req.body;
+    console.log(data)
     res.status(200).json({
         message: 'Data received successfully!',
         data
