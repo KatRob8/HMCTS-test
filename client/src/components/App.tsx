@@ -1,6 +1,9 @@
 import axios from 'axios'
 import { useEffect } from 'react';
-import '../assets/css/App.css'
+import '../assets/styles/App.scss'
+import Header from './Header';
+import Footer from './Footer';
+import MainContent from './MainContent';
 
 
 function App() {
@@ -23,9 +26,9 @@ function App() {
 
   return (
     <>
-        <div>
-            TaskApp
-        </div>
+        <Header />
+        <MainContent />
+        <Footer />
     </>
   )
 }
