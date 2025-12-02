@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 
 
@@ -13,11 +13,6 @@ function TaskForm() {
 
     const [task, setTask] = useState<Task>({title: "", description: "", status: 0, dateTime: ""});
 
-    useEffect(() => {
-        console.log(task)
-  
-    }, [task]); 
-
     const updateData = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement> | React.ChangeEvent<HTMLSelectElement> ) => {
         setTask((prevObject) => {
             return {
@@ -31,6 +26,7 @@ function TaskForm() {
         e.preventDefault();
         try {
             const response = await axios.post('http://localhost:3000/submit-task', {task: task}, {withCredentials: true})
+        
             console.log(response)
 
         } catch (error) {
