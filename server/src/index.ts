@@ -4,7 +4,6 @@ import cors from 'cors';
 import env from 'dotenv';
 import db from './db.js';
 import { validateTask } from './validateTask.js';
-import type { Task } from './types/Task.js';
 
 const app = express();
 env.config({ path: '../.env' });
@@ -36,16 +35,16 @@ app.post('/submit-task', (req: Request, res: Response) => {
         const {title, description, status, dateTime} = task;
 
         try {
-            const stmt = db.prepare("INSERT INTO tasks (title, description, status, date_time) VALUES (?, ?, ?, ?)");
-            stmt.run(title, description, status, dateTime);
+            const stmt = db.prepare("INSERT INTO tasks (title, description, status, date_time) VALUES (?, ?, ?, ?) RETURNING *");
+            const result = stmt.run(title, description, status, dateTime);
 
+            // Send data back to client
             res.status(201).json({
-                data: {title, description, status, dateTime},
+                newTask: {id: result.lastInsertRowid, createdTask: {title, description, status, dateTime}},
                 message: 'Task created!',
             });
 
         } catch (error) {
-            // Res status here
             res.status(500).json({
                 message: 'Something went wrong'
             })

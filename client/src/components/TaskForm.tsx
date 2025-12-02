@@ -1,17 +1,13 @@
 import { useState } from "react";
 import axios from "axios";
-
+import { useNavigate } from "react-router-dom";
+import type { Task } from "../types/Task";
 
 function TaskForm() {
 
-    type Task = {
-        title: string;
-        description: string | undefined;
-        status: number;
-        dateTime: string;
-    };
-
     const [task, setTask] = useState<Task>({title: "", description: "", status: 0, dateTime: ""});
+    const [isVisible, setIsVisible] = useState<boolean>(false);
+    const navigate = useNavigate();
 
     const updateData = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement> | React.ChangeEvent<HTMLSelectElement> ) => {
         setTask((prevObject) => {
@@ -25,12 +21,26 @@ function TaskForm() {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
+            // Post task to backend
             const response = await axios.post('http://localhost:3000/submit-task', {task: task}, {withCredentials: true})
-        
-            console.log(response)
+
+            // Destructure response
+            const {id, createdTask} = response.data.newTask;
+
+            // Navigate to task details page
+            navigate(`/task/${id}`, { state: {task: createdTask} });
 
         } catch (error) {
-            console.log(error)
+            if (axios.isAxiosError(error)) {
+                if (error.status === 400) {
+                    // Show error message
+                    setIsVisible((prev) => !prev);
+                }
+                else {
+                    // Navigate to error page
+                    navigate('/error');
+                }
+            }
         }
     }
 
@@ -67,7 +77,8 @@ function TaskForm() {
                     Due By*:
                 </label>
                 <input className="govuk-input" id="datetime-input" name="dateTime" type="datetime-local" value={task.dateTime} onChange={(e) => updateData(e)} required={true}/>
-            
+
+                {isVisible && <p className="govuk-error-message">Please ensure all required fields marked with an asterisk * are filled out or selected</p>}
                 <button type="submit" className="govuk-button" data-module="govuk-button">
                     Save 
                 </button>

@@ -4,7 +4,7 @@ function Header() {
     <header className="govuk-header" data-module="govuk-header">
         <div className="govuk-header__container govuk-width-container">
             <div className="govuk-header__logo">
-                <a href="#" className="govuk-header__link govuk-header__link--homepage">
+                <a href="/" className="govuk-header__link govuk-header__link--homepage">
                     <svg
                     focusable="false"
                     role="img"

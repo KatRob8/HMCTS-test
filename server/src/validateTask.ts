@@ -3,9 +3,6 @@ import type { Task } from './types/Task.js';
 
 export function validateTask(data: any): { isValid: boolean; errors: string[]; task: Task } {
 
-    console.log(data);
-
-
     const {title, description, status, dateTime} = data;
 
     let task: Task = {title: '', description: null, status: 0, dateTime: ''};
