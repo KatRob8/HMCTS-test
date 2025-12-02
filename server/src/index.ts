@@ -3,6 +3,8 @@ import type { Request, Response } from 'express';
 import cors from 'cors';
 import env from 'dotenv';
 import db from './db.js';
+import { validateTask } from './validateTask.js';
+import type { Task } from './types/Task.js';
 
 const app = express();
 env.config({ path: '../.env' });
@@ -19,24 +21,36 @@ app.use(express.json());
 // Routes
 
 app.post('/submit-task', (req: Request, res: Response) => {
-    // Get data from form
-    const {title, description, status, dateTime} = req.body.task;
+    // Validate the data
+    const {isValid, errors, task} = validateTask(req.body.task);
 
-    // Clean the data
-
-    try {
-        const stmt = db.prepare("INSERT INTO tasks (title, description, status, date_time) VALUES (?, ?, ?, ?)");
-        stmt.run(title, description, status, dateTime);
-
-        res.status(200).json({
-            data: {title, description, status, dateTime},
-            message: 'Data received successfully!',
+    if (!isValid) {
+        // Return error if invalid
+        return res.status(400).json({
+            error: "Validation failed",
+            details: errors,
         });
+    }
+    else {
+        // Data is valid, store in database
+        const {title, description, status, dateTime} = task;
 
-    } catch (error) {
-        // Res status here
-        console.error("Database error:", error);
-    } 
+        try {
+            const stmt = db.prepare("INSERT INTO tasks (title, description, status, date_time) VALUES (?, ?, ?, ?)");
+            stmt.run(title, description, status, dateTime);
+
+            res.status(201).json({
+                data: {title, description, status, dateTime},
+                message: 'Task created!',
+            });
+
+        } catch (error) {
+            // Res status here
+            res.status(500).json({
+                message: 'Something went wrong'
+            })
+        } 
+    }
 });
 
 // Start the server

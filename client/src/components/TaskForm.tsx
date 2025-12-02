@@ -6,7 +6,7 @@ function TaskForm() {
 
     type Task = {
         title: string;
-        description: string;
+        description: string | undefined;
         status: number;
         dateTime: string;
     };
@@ -38,7 +38,7 @@ function TaskForm() {
         <form onSubmit={(e) => handleSubmit(e)}>
             <div className="govuk-form-group">
                 <label className="govuk-label" htmlFor="title-name">
-                    Title
+                    Title*
                 </label>
                 <input className="govuk-input" id="title-name" name="title" type="text" value={task.title} onChange={(e) => updateData(e)} required={true} />
             
@@ -51,10 +51,10 @@ function TaskForm() {
 
                 <div className="govuk-form-group">
                     <label className="govuk-label" htmlFor="status-select">
-                        Status
+                        Status*
                     </label>
-                    <select className="govuk-select" id="status-select" name="status" value={task.status} onChange={(e) => updateData(e)} required={true} >
-                        <option value={0} selected>Choose status</option>
+                    <select className="govuk-select" id="status-select" name="status" defaultValue={task.status} onChange={(e) => updateData(e)} required={true} >
+                        <option value={0} disabled={true}>Choose status</option>
                         <option value={1}>To Do</option>
                         <option value={2}>In Progress</option>
                         <option value={3}>On Hold</option>
@@ -64,7 +64,7 @@ function TaskForm() {
                 </div>
 
                 <label className="govuk-label" htmlFor="datetime-input">
-                    Due By:
+                    Due By*:
                 </label>
                 <input className="govuk-input" id="datetime-input" name="dateTime" type="datetime-local" value={task.dateTime} onChange={(e) => updateData(e)} required={true}/>
             
