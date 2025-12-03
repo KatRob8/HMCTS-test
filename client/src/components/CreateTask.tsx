@@ -1,3 +1,4 @@
+import MainHeading from "./MainHeading";
 import TaskForm from "./TaskForm";
 
 function CreateTask() {
@@ -5,7 +6,7 @@ function CreateTask() {
 
   return (
     <>
-        <h1 className="govuk-heading-xl">New Task</h1>
+        <MainHeading heading="New Task"/>
         <TaskForm />
     </>
  

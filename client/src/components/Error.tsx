@@ -1,13 +1,12 @@
-
+import MainHeading from "./MainHeading";
 
 function Error() {
 
   return (
     <>
-        <h1 className="govuk-heading-l">Sorry, something went wrong</h1>
+        <MainHeading heading="Sorry, something went wrong"/>
         <p className="govuk-body">Please try again later.</p>
     </>
- 
   )
 }
 

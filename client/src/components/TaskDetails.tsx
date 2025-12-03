@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom";
 import type { Task } from "../types/Task";
+import { TASK_CODES } from "../utilities/taskCodes";
 
 function TaskDetails() {
 
@@ -7,18 +8,13 @@ function TaskDetails() {
     const location = useLocation();
     const state = location.state;
 
+    // Deconstruct data
     const {title, description, status, dateTime}: Task = state.task
 
-    const taskCodes = {
-        1: "To Do",
-        2: "In Progress",
-        3: "On Hold",
-        4: "Completed",
-        5: "Cancelled"
-    };
+    // Get status as text from status code
+    const statusString = TASK_CODES[status as keyof typeof TASK_CODES];
 
-    const statusString = taskCodes[status as keyof typeof taskCodes];
-
+    // Get date & time in a more readable format
     const date = new Date(dateTime);
     const formattedDate = date.toLocaleString("en-GB", { 
         day: "2-digit",

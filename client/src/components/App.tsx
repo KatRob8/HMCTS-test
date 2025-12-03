@@ -1,10 +1,8 @@
-import '../assets/styles/App.scss'
 import Layout from './Layout';
 import CreateTask from './CreateTask';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import TaskDetails from './TaskDetails';
 import Error from './Error';
-
 
 function App() {
 
