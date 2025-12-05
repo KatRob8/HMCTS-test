@@ -10,7 +10,7 @@ type Props = {
 
 function TextArea({innerText, id, name, value, rows, isRequired, updateData}: Props) {
     return (
-        <div className="govuk-form-group">
+        <div className="govuk-form-group govuk-!-margin-bottom-3">
             <label className="govuk-label" htmlFor={id}>
                 {innerText}
             </label>

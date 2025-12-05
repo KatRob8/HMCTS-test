@@ -4,7 +4,7 @@ type Props = {
 
 function SubmitBtn({ name }: Props) {
     return (
-        <button type="submit" className="govuk-button" data-module="govuk-button">
+        <button type="submit" className="govuk-button govuk-!-margin-top-3" data-module="govuk-button">
             { name } 
         </button>
     )

@@ -1,4 +1,4 @@
-import type { Task } from './types/Task.js';
+import type { Task } from '../types/Task.js';
 
 
 export function validateTask(data: any): { isValid: boolean; errors: string[]; task: Task } {

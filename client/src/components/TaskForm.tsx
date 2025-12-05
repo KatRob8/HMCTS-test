@@ -68,7 +68,7 @@ function TaskForm() {
                     id="description-text" 
                     name="description" 
                     value={task.description} 
-                    rows={5} 
+                    rows={3} 
                     isRequired={false} 
                     updateData={updateData} 
                 />

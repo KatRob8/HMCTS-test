@@ -1,13 +1,13 @@
 import express from 'express';  
-import type { Request, Response } from 'express';  
+import type { Application, Request, Response } from 'express';  
 import cors from 'cors';
 import env from 'dotenv';
 import db from './db.js';
-import { validateTask } from './validateTask.js';
+import { validateTask } from './utilities/validateTask.js';
 
-const app = express();
+const app: Application = express();
 env.config({ path: '../.env' });
-const port = process.env.PORT
+
 const corsOptions = {
     origin: [`http://localhost:${process.env.REACT_APP_PORT}`],
     credentials: true
@@ -52,7 +52,5 @@ app.post('/submit-task', (req: Request, res: Response) => {
     }
 });
 
-// Start the server
-app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
-});
+export default app;
+
