@@ -2,23 +2,30 @@
 
 ## Get Started / Setup
 
+### Requirements
+
+*Use `macOS`, `Linux` or `Git Bash` on `Windows`**  
+*Ensure `Node.js` and `npm` are installed**
+
+### Instructions
+
 #### Navigate to your IDE's terminal and use the following commands:
 
 1. Clone the repo:
     - `git clone https://github.com/KatRob8/HMCTS-test.git`
-2. Navigate to backend:
+2. Navigate to directory:
     - `cd hmcts-test`
-    - `cd server`
-3. Install dependencies:
-   - `npm install`
-4. Set up environment variables
-    - Create a file called `.env` in the server directory (top level) in the terminal:
+3. Set up environment variables
+    - Create a file called `.env` in the server directory (top level) using the following command:
         - `touch .env`
-    - Open that file 
-        - `code .env`
-    - Paste the following contents inside it and save:
-        - `PORT="3000"
-REACT_APP_PORT="5173"`
+    - Open that file and paste the following contents inside it and save:
+        ```
+        PORT="3000"   
+        REACT_APP_PORT="5173"
+4. Navigate to backend
+    - `cd server`
+5. Install dependencies:
+   - `npm install`
 
 6. Start the backend:
    - `npm run dev`
@@ -27,7 +34,7 @@ REACT_APP_PORT="5173"`
 8. Install dependencies:
    - `npm install`
 9. Start the frontend:
-   - `npm start`
+   - `npm run dev`
 
 ## Usage
 
