@@ -49,11 +49,11 @@ From the server directory, run:
 This runs Jest tests for the validator helper function (`validateTask.ts`) and the API POST route `/submit-task`.
 
 ## Tech Stack
-- Frontend: React, TypeScript
-- Backend: Node.js, Express, TypeScript
-- Database: SQLite (Better-SQLite3)
-- Styling: GOV.UK Design System
-- Testing: Jest
+- **Frontend:** React, TypeScript
+- **Backend:** Node.js, Express, TypeScript
+- **Database:** SQLite (Better-SQLite3)
+- **Styling:** GOV.UK Design System, SASS
+- **Testing:** Jest
 
 ## Description
 
