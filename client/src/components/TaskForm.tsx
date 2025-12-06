@@ -30,7 +30,6 @@ function TaskForm() {
             // Post task to backend
             const response = await axios.post('http://localhost:3000/submit-task', {task: task}, {withCredentials: true})
 
-            console.log(response)
             // Destructure response
             const {id, createdTask} = response.data.newTask;
 

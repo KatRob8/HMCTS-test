@@ -1,6 +1,8 @@
 import { useLocation } from "react-router-dom";
 import type { Task } from "../types/Task";
 import { TASK_CODES } from "../utilities/taskCodes";
+import Detail from "./Detail";
+import Confirmation from "./Confirmation";
 
 function TaskDetails() {
 
@@ -27,44 +29,12 @@ function TaskDetails() {
 
     return (
         <section>
-            <div className="govuk-panel govuk-panel--confirmation">
-                <h1 className="govuk-panel__title">
-                    Task Created Successfully!
-                </h1>
-            </div>
+            <Confirmation title="Task Created Successfully!"/>
             <dl className="govuk-summary-list">
-                <div className="govuk-summary-list__row">
-                    <dt className="govuk-summary-list__key">
-                        Title
-                    </dt>
-                    <dd className="govuk-summary-list__value">
-                        {title}
-                    </dd>
-                </div>
-                <div className="govuk-summary-list__row">
-                    <dt className="govuk-summary-list__key">
-                        Description (Optional)
-                    </dt>
-                    <dd className="govuk-summary-list__value">
-                        {description || "N/A"}
-                    </dd>
-                </div>
-                <div className="govuk-summary-list__row">
-                    <dt className="govuk-summary-list__key">
-                        Status
-                    </dt>
-                    <dd className="govuk-summary-list__value">
-                        {statusString}
-                    </dd>
-                </div>
-                <div className="govuk-summary-list__row">
-                    <dt className="govuk-summary-list__key">
-                        Due By
-                    </dt>
-                    <dd className="govuk-summary-list__value">
-                        {formattedDate}
-                    </dd>
-                </div>
+                <Detail listKey="Title" listValue={title}/>
+                <Detail listKey="Description (Optional)" listValue={description || "N/A"}/>
+                <Detail listKey="Status" listValue={statusString}/>
+                <Detail listKey="Due By" listValue={formattedDate}/>
             </dl>
         </section>
     )
