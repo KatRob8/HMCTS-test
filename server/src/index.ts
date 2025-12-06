@@ -21,9 +21,9 @@ app.use(express.json());
 
 app.post('/submit-task', (req: Request, res: Response) => {
     // Validate the data
-    const {isValid, errors, task} = validateTask(req.body.task);
+    const {errors, task} = validateTask(req.body.task);
 
-    if (!isValid) {
+    if (!task) {
         // Return error if invalid
         return res.status(400).json({
             error: "Validation failed",
@@ -31,6 +31,7 @@ app.post('/submit-task', (req: Request, res: Response) => {
         });
     }
     else {
+
         // Data is valid, store in database
         const {title, description, status, dateTime} = task;
 
