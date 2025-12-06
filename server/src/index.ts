@@ -20,6 +20,7 @@ app.use(express.json());
 // Routes
 
 app.post('/submit-task', (req: Request, res: Response) => {
+
     // Validate the data
     const {errors, task} = validateTask(req.body.task);
 

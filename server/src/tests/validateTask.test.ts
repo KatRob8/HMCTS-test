@@ -1,5 +1,5 @@
 import { describe, it, expect } from '@jest/globals';
-import { validateTask } from './validateTask.js';
+import { validateTask } from '../utilities/validateTask.js';
 
 describe('validateTask', () => {
 
