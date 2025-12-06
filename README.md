@@ -38,10 +38,9 @@
 
 ## Usage
 
-1. In your browser, navigate to http://localhost:3000
+1. In your browser, navigate to http://localhost:5173
 2. Fill out the task form to create a task
 3. Once submitted, you should see your task details appear
-4. If database.db doesn’t exist, it will be created automatically.
 
 ## Testing
 From the server directory, run:
