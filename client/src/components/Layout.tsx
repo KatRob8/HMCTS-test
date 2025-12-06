@@ -7,7 +7,7 @@ export default function Layout() {
         <>
             <Header />
             
-            <div className="govuk-width-container">
+            <div className="govuk-width-container" id="main-container">
                 <main className="govuk-main-wrapper" id="main-content">
                     <Outlet />
                 </main>

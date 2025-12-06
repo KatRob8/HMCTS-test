@@ -52,7 +52,7 @@ function TaskForm() {
     }
 
     return (
-        <form onSubmit={(e) => handleSubmit(e)}>
+        <form onSubmit={(e) => handleSubmit(e)} >
             <div className="govuk-form-group">
                 <Input 
                     innerText="Title*" 
@@ -99,7 +99,6 @@ function TaskForm() {
                 <SubmitBtn name="Save" />
             </div>
         </form>
-
     )
 }
 
