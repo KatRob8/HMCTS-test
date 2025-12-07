@@ -68,12 +68,18 @@ This runs Jest tests for the validator helper function (`validateTask.ts`) and t
 
 ```json
 {
-  "title": "Test Task",
-  "description": "This is a description for the task", // Optional, can also be empty
-  "status": 1,
-  "dateTime": "2025-06-12T19:30"
-}  
+  "task": {
+    "title": "Test Task",
+    "description": "This is a description for the task", // Optional
+    "status": 1,
+    "dateTime": "2025-06-12T19:30"
+  }
+}
 ```
+
+#### Response:
+If valid, returns a cleaned version of the task object. If invalid, returns a 400 Bad Request error.
+
 ## Tech Stack
 - **Frontend:** React, TypeScript
 - **Backend:** Node.js, Express, TypeScript
