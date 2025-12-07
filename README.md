@@ -22,6 +22,7 @@
         ```
         PORT="3000"   
         REACT_APP_PORT="5173"
+        ```
 4. Navigate to backend
     - `cd server`
 5. Install dependencies:
@@ -48,6 +49,31 @@ From the server directory, run:
 
 This runs Jest tests for the validator helper function (`validateTask.ts`) and the API POST route `/submit-task`.
 
+## API Documentation
+
+### POST /submit-task
+
+**Method**: `POST`
+
+**Description**: This endpoint creates a new task, stores it in a database and returns the task details upon successful creation.
+
+---
+
+#### Request
+
+- **Headers**:
+  - `Content-Type: application/json`
+  
+- **Body** (JSON):
+
+```json
+{
+  "title": "Test Task",
+  "description": "This is a description for the task",
+  "status": 1,
+  "dateTime": "2025-06-12T19:30"
+}  
+```
 ## Tech Stack
 - **Frontend:** React, TypeScript
 - **Backend:** Node.js, Express, TypeScript
