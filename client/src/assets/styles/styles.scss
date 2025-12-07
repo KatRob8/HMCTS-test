@@ -11,20 +11,15 @@ html, body {
 }
 
 #root {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-#main-container {
-    flex: 1;
-    width: 100%;
+    min-height: 100%; 
+    display: block;
 }
 
 .govuk-textarea {
     margin-bottom: 0;
 }
 
-section {
-    width: 100%;
+#main-content {
+    min-height: 45vh;
 }
+
