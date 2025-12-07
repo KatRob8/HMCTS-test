@@ -23,14 +23,14 @@
         PORT="3000"   
         REACT_APP_PORT="5173"
         ```
-4. Navigate to backend
+4. Navigate to the backend
     - `cd server`
 5. Install dependencies:
    - `npm install`
 
 6. Start the backend:
    - `npm run dev`
-7. In a new terminal, navigate to frontend:
+7. In a new terminal, navigate to the frontend:
    - `cd client`
 8. Install dependencies:
    - `npm install`
@@ -69,7 +69,7 @@ This runs Jest tests for the validator helper function (`validateTask.ts`) and t
 ```json
 {
   "title": "Test Task",
-  "description": "This is a description for the task",
+  "description": "This is a description for the task", // Optional, can also be empty
   "status": 1,
   "dateTime": "2025-06-12T19:30"
 }  
@@ -88,15 +88,15 @@ A simple task creator web app that allows you to use a form to create a task, an
 ## Technical Choices & Approach
 
 ### Stack
-I decided to stick to a modern stack using TypeScript and ESM modules to keep in line with modern development practices and trends I see in programming. I believe this helps to future proof code. 
+I decided to stick to a modern stack using TypeScript and ESM modules to keep in line with modern development practices and trends I see in programming. This approach helps future-proof the code, making it more maintainable while also minimizing potential issues related to deprecated features down the line.
 
 ### Database 
 
-I've also opted for a SQLite database (using Better-SQLite3 to be more specific) as this is ideal for a small project / demo by being much easier to get up and running (it's simply installed with all the other dependencies). However, if the scope of the project was much bigger and needed to be scaled, I would opt for PostgreSQL or similar, hosted in the cloud. 
+I've opted for SQLite with Better-SQLite3 as this is ideal for a small demo by being lightweight and an easy to setup solution (it's simply installed with all the other dependencies). However, for larger-scale applications that require more scalability, I would haved opted for PostgreSQL or similar, hosted in the cloud. 
 
 ### Testing 
 
-For the sake of simplicity, I have focused testing on the `validateTask.ts` function and my POST route, as this is where the main functionality of the program lies. In a real world scenario, I would also test the frontend and other aspects of the web app but I kept it short for the scope of this project.
+For the sake of simplicity, I have focused testing on the `validateTask.ts` function and the `/submit-task` POST route, as they are the core functionalities of the application. In a real world scenario, I would expand the tests to cover the frontend and other aspects of the web app, but I kept it short for the scope of this project.
 
 ### Design
 
