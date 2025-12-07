@@ -16,7 +16,7 @@
 2. Navigate to directory:
     - `cd hmcts-test`
 3. Set up environment variables
-    - Create a file called `.env` in the server directory (top level) using the following command:
+    - Create a file called `.env` in the `hmcts-test` directory using:
         - `touch .env`
     - Open that file and paste the following contents inside it and save:
         ```
